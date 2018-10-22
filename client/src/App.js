@@ -33,7 +33,7 @@ class App extends Component {
 
   // Checks if user is logged in and updates state.
   getUser = () => {
-    axios.get('/user').then(response => {
+    axios.get('api/user').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
 
@@ -47,7 +47,7 @@ class App extends Component {
           lastName: response.data.user.lastName
         })
       } else {
-        console.log('Get user: no user')
+        console.log('Get user: no user found')
         this.setState({
           loggedIn: false,
           email: null

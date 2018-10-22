@@ -19,15 +19,15 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state.email, ' signed up')
+    //console.log(this.state.email, ' signed up')
 
     // request to server
-    axios.post('/login', {
+    axios.post('api/user/login', {
       email: this.state.email,
       password: this.state.password
     }).then(response => {
-      console.log('login response: ')
-      console.log(response)
+      //console.log('login response: ')
+      //console.log(response)
       if (response.status === 200) {
         // update App.js state
         this.props.updateUser({

@@ -1,14 +1,15 @@
 const express = require('express');
 const path = require('path');
-const app = express();
-const morgan = require('morgan');
-const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const session = require('express-session');
-const passport = require('./passport');
+const morgan = require('morgan');
+const bodyParser = require('body-parser')
+
 const MongoStore = require('connect-mongo')(session);
+const app = express();
 const PORT = process.env.PORT || 3001;
 
+const passport = require('./passport');
 const routes = require('./routes');
 
 // Configure Middleware
@@ -23,12 +24,6 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }))
-
-// Logging session
-app.use((req, res, next) => {
-  console.log('req.session', req.session);
-  next()
-})
 
 // Passport
 app.use(passport.initialize())

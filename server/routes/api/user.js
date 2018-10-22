@@ -54,7 +54,7 @@ router.post('/logout', (req, res) => {
   }
 })
 
-router.get('/user', (req, res, next) => {
+router.get('/', (req, res, next) => {
   console.log('==== user !! ====')
   console.log(req.user)
   if (req.user) {

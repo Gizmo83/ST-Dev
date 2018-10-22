@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Login extends Component {
@@ -72,6 +72,7 @@ class Login extends Component {
             <br />
             <button type="submit" onClick={this.handleSubmit}>Sign Up</button>
           </form>
+          <Link to='password_reset'>Reset Password</Link>
         </div>
       )
     }

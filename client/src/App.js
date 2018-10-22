@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import Surgeries from './pages/Surgeries';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import PasswordReset from './pages/PasswordReset';
 
 
 class App extends Component {
@@ -93,6 +94,10 @@ class App extends Component {
               <Login
                 updateUser={this.updateUser}
               />}
+            />
+            <Route
+              exact path='/password_reset'
+              component={PasswordReset}
             />
           </Switch>
         </div>

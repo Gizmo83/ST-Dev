@@ -21,32 +21,34 @@ class SignUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const { firstName, lastName, email, password } = this.state;
 
     // request to server
-    axios.post('/signup', {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      password: this.state.password
+    axios.post('api/user/signup', {
+      firstName,
+      lastName,
+      email: email.toLowerCase(),
+      password
     }).then(response => {
-      console.log(response)
+      //console.log(response)
       if (!response.data.errors) {
-        console.log('successful sign up')
+        //console.log('successful sign up')
 
         // After successful sign up send to login route to log user in.
-        axios.post('/login', {
-          email: this.state.email,
+        axios.post('api/user/login', {
+          email: email.toLowerCase(),
           password: this.state.password
         }).then((response) => {
-          console.log('login response: ')
-          console.log(response)
+          //console.log('login response: ')
+          //console.log(response)
+          const { email, firstName, lastName } = response.data;
           if (response.status === 200) {
             // update App.js state
             this.props.updateUser({
               loggedIn: true,
-              email: response.data.email,
-              firstName: response.data.firstName,
-              lastName: response.data.lastName
+              email,
+              firstName,
+              lastName
             })
             // update the state to redirect to dashboard
             this.setState({

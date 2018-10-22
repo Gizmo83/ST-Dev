@@ -6,9 +6,9 @@ class NavBar extends Component {
 
   logout = (event) => {
     event.preventDefault();
-    console.log('logging out')
-    axios.post('/logout').then((response) => {
-      console.log(response.data);
+    //console.log('logging out')
+    axios.post('/api/user/logout').then((response) => {
+      //console.log(response.data);
       if (response.status === 200) {
         this.props.updateUser({
           loggedIn: false,
@@ -17,13 +17,13 @@ class NavBar extends Component {
         window.location = '/';
       }
     }).catch((error) => {
-      console.log('Logout error')
+      console.log('Logout error ', error);
     })
   }
 
   render () {
     const { loggedIn } = this.props.state;
-    console.log('navbar render, props: ', this.props)
+    //console.log('navbar render, props: ', this.props)
 
     return (
       <nav>
